@@ -1,0 +1,85 @@
+body {
+  background: #6CAEE0;
+  color: #555;
+}
+
+.btn {
+  border: none;
+  border-radius: 0;
+  padding: 10px 15px;
+  font-size: 18px;
+}
+
+.btn-primary {
+  background: #e0786c;
+}
+
+.btn-primary:hover {
+  background: #c66b61;
+}
+
+.navbar {
+	text-align:center;
+}
+.navbar .nav {
+	float:none;
+}
+.navbar .nav li {
+	display:inline-block;
+	float:none;
+	margin:0 20px;
+	vertical-align:middle;
+}
+
+.navbar-inverse {
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  background: #6CAEE0;
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav>li>a,
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-toggle {
+  border: none;
+  background: #e0786c;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+  background: #c66b61;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border: none;
+}
+
+.form-container {
+  padding: 40px;
+  background: #fff;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.form-container .heading {
+  line-height: 1;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  font-size: 18px;
+  padding: 10px 15px;
+  height: auto;
+}
+
+@media all and (max-width: 767px) {
+  .form-container {
+    padding: 20px;
+    width: 100%;
+  }
+}
