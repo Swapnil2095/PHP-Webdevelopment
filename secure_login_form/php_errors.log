@@ -1,0 +1,52 @@
+[08-Dec-2017 22:24:49 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'YOUR DATABASE USERNAME HERE'@'localhost' (using password: YES)' in /home/ubuntu/workspace/login/advanced/includes/class-db.php:13
+Stack trace:
+#0 /home/ubuntu/workspace/login/advanced/includes/class-db.php(13): PDO->__construct('mysql:host=loca...', 'YOUR DATABASE U...', 'YOUR DATABASE P...', Array)
+#1 /home/ubuntu/workspace/login/advanced/includes/class-db.php(128): PDO_DB->__construct('YOUR DATABASE N...', 'YOUR DATABASE U...', 'YOUR DATABASE P...', 'utf8mb4', 'localhost')
+#2 /home/ubuntu/workspace/login/advanced/load.php(3): require_once('/home/ubuntu/wo...')
+#3 /home/ubuntu/workspace/login/advanced/index.php(2): require_once('/home/ubuntu/wo...')
+#4 {main}
+  thrown in /home/ubuntu/workspace/login/advanced/includes/class-db.php on line 13
+[11-Dec-2017 14:38:07 UTC] PHP Notice:  Undefined index: username in /home/ubuntu/workspace/login/advanced/includes/class-login.php on line 18
+[11-Dec-2017 14:38:07 UTC] PHP Stack trace:
+[11-Dec-2017 14:38:07 UTC] PHP   1. {main}() /home/ubuntu/workspace/login/advanced/index.php:0
+[11-Dec-2017 14:38:07 UTC] PHP   2. Login->verify_session() /home/ubuntu/workspace/login/advanced/index.php:10
+[11-Dec-2017 14:38:21 UTC] PHP Notice:  Undefined index: rememberme in /home/ubuntu/workspace/login/advanced/includes/class-login.php on line 55
+[11-Dec-2017 14:38:21 UTC] PHP Stack trace:
+[11-Dec-2017 14:38:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/login/advanced/index.php:0
+[11-Dec-2017 14:38:21 UTC] PHP   2. Login->verify_login() /home/ubuntu/workspace/login/advanced/index.php:6
+[11-Dec-2017 14:39:23 UTC] PHP Notice:  Undefined variable: columns in /home/ubuntu/workspace/login/advanced/includes/class-db.php on line 60
+[11-Dec-2017 14:39:23 UTC] PHP Stack trace:
+[11-Dec-2017 14:39:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/login/advanced/index.php:0
+[11-Dec-2017 14:39:23 UTC] PHP   2. Login->verify_login() /home/ubuntu/workspace/login/advanced/index.php:6
+[11-Dec-2017 14:39:23 UTC] PHP   3. Login->rememberme() /home/ubuntu/workspace/login/advanced/includes/class-login.php:56
+[11-Dec-2017 14:39:23 UTC] PHP   4. PDO_DB->insert() /home/ubuntu/workspace/login/advanced/includes/class-login.php:247
+[11-Dec-2017 14:39:23 UTC] PHP Notice:  Undefined variable: placeholders in /home/ubuntu/workspace/login/advanced/includes/class-db.php on line 61
+[11-Dec-2017 14:39:23 UTC] PHP Stack trace:
+[11-Dec-2017 14:39:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/login/advanced/index.php:0
+[11-Dec-2017 14:39:23 UTC] PHP   2. Login->verify_login() /home/ubuntu/workspace/login/advanced/index.php:6
+[11-Dec-2017 14:39:23 UTC] PHP   3. Login->rememberme() /home/ubuntu/workspace/login/advanced/includes/class-login.php:56
+[11-Dec-2017 14:39:23 UTC] PHP   4. PDO_DB->insert() /home/ubuntu/workspace/login/advanced/includes/class-login.php:247
+[11-Dec-2017 14:41:10 UTC] PHP Notice:  Undefined variable: columns in /home/ubuntu/workspace/login/advanced/includes/class-db.php on line 60
+[11-Dec-2017 14:41:10 UTC] PHP Stack trace:
+[11-Dec-2017 14:41:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/login/advanced/index.php:0
+[11-Dec-2017 14:41:10 UTC] PHP   2. Login->verify_login() /home/ubuntu/workspace/login/advanced/index.php:6
+[11-Dec-2017 14:41:10 UTC] PHP   3. Login->rememberme() /home/ubuntu/workspace/login/advanced/includes/class-login.php:56
+[11-Dec-2017 14:41:10 UTC] PHP   4. PDO_DB->insert() /home/ubuntu/workspace/login/advanced/includes/class-login.php:247
+[11-Dec-2017 14:41:10 UTC] PHP Notice:  Undefined variable: placeholders in /home/ubuntu/workspace/login/advanced/includes/class-db.php on line 61
+[11-Dec-2017 14:41:10 UTC] PHP Stack trace:
+[11-Dec-2017 14:41:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/login/advanced/index.php:0
+[11-Dec-2017 14:41:10 UTC] PHP   2. Login->verify_login() /home/ubuntu/workspace/login/advanced/index.php:6
+[11-Dec-2017 14:41:10 UTC] PHP   3. Login->rememberme() /home/ubuntu/workspace/login/advanced/includes/class-login.php:56
+[11-Dec-2017 14:41:10 UTC] PHP   4. PDO_DB->insert() /home/ubuntu/workspace/login/advanced/includes/class-login.php:247
+[11-Dec-2017 14:43:15 UTC] PHP Notice:  Undefined variable: columns in /home/ubuntu/workspace/login/advanced/includes/class-db.php on line 64
+[11-Dec-2017 14:43:15 UTC] PHP Stack trace:
+[11-Dec-2017 14:43:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/login/advanced/index.php:0
+[11-Dec-2017 14:43:15 UTC] PHP   2. Login->verify_login() /home/ubuntu/workspace/login/advanced/index.php:6
+[11-Dec-2017 14:43:15 UTC] PHP   3. Login->rememberme() /home/ubuntu/workspace/login/advanced/includes/class-login.php:56
+[11-Dec-2017 14:43:15 UTC] PHP   4. PDO_DB->insert() /home/ubuntu/workspace/login/advanced/includes/class-login.php:247
+[11-Dec-2017 14:43:15 UTC] PHP Notice:  Undefined variable: placeholders in /home/ubuntu/workspace/login/advanced/includes/class-db.php on line 65
+[11-Dec-2017 14:43:15 UTC] PHP Stack trace:
+[11-Dec-2017 14:43:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/login/advanced/index.php:0
+[11-Dec-2017 14:43:15 UTC] PHP   2. Login->verify_login() /home/ubuntu/workspace/login/advanced/index.php:6
+[11-Dec-2017 14:43:15 UTC] PHP   3. Login->rememberme() /home/ubuntu/workspace/login/advanced/includes/class-login.php:56
+[11-Dec-2017 14:43:15 UTC] PHP   4. PDO_DB->insert() /home/ubuntu/workspace/login/advanced/includes/class-login.php:247
