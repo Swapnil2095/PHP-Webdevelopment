@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>AJAX form Check</title>
+    <style>
+        .error {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="validation.php" method="POST" id="myform">
+        <input type="text" class="form-group" name="name"><span class="error-name error">Missing Name</span>
+        <br>
+        <input type="email" class="form-group" name="email"><span class="error-email error">Missing Name</span>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            
+            $('form').submit(function (event) {
+                
+                $('.error').hide();
+                var datastring = $("#myform").serialize();
+
+                $.ajax({
+                    type: 'POST'
+                    , url: 'validation.php'
+                    , data: datastring
+                    , dataType: 'json'
+                    , success: function (data) {
+                        console.log(data);
+                        
+                        if (!data.success) {
+                            if (data.errors.name) {
+                                $('.error-name').show();
+                            }
+                           
+                            if (data.errors.email) {
+                                $('.error-email').show();
+                            }
+                        }
+                        else {
+                            $('#myform').append('<div>' + data.message + '</div>');
+                        }
+                    }
+                })
+                event.preventDefault();
+            });
+        });
+    </script>
+    
+</body>
+</html>
