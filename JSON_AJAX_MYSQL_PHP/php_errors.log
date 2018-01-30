@@ -1,0 +1,12 @@
+[30-Jan-2018 12:05:26 UTC] PHP Warning:  include(conn.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/PHP-Webdevelopment/JSON_AJAX_MYSQL_PHP/lesson-1/index.php on line 6
+[30-Jan-2018 12:05:26 UTC] PHP Stack trace:
+[30-Jan-2018 12:05:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/PHP-Webdevelopment/JSON_AJAX_MYSQL_PHP/lesson-1/index.php:0
+[30-Jan-2018 12:05:26 UTC] PHP Warning:  include(): Failed opening 'conn.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/PHP-Webdevelopment/JSON_AJAX_MYSQL_PHP/lesson-1/index.php on line 6
+[30-Jan-2018 12:05:26 UTC] PHP Stack trace:
+[30-Jan-2018 12:05:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/PHP-Webdevelopment/JSON_AJAX_MYSQL_PHP/lesson-1/index.php:0
+[30-Jan-2018 12:05:58 UTC] PHP Warning:  include(conn.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/PHP-Webdevelopment/JSON_AJAX_MYSQL_PHP/lesson-1/index.php on line 6
+[30-Jan-2018 12:05:58 UTC] PHP Stack trace:
+[30-Jan-2018 12:05:58 UTC] PHP   1. {main}() /home/ubuntu/workspace/PHP-Webdevelopment/JSON_AJAX_MYSQL_PHP/lesson-1/index.php:0
+[30-Jan-2018 12:05:58 UTC] PHP Warning:  include(): Failed opening 'conn.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/PHP-Webdevelopment/JSON_AJAX_MYSQL_PHP/lesson-1/index.php on line 6
+[30-Jan-2018 12:05:58 UTC] PHP Stack trace:
+[30-Jan-2018 12:05:58 UTC] PHP   1. {main}() /home/ubuntu/workspace/PHP-Webdevelopment/JSON_AJAX_MYSQL_PHP/lesson-1/index.php:0
