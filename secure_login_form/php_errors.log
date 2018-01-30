@@ -50,3 +50,11 @@ Stack trace:
 [11-Dec-2017 14:43:15 UTC] PHP   2. Login->verify_login() /home/ubuntu/workspace/login/advanced/index.php:6
 [11-Dec-2017 14:43:15 UTC] PHP   3. Login->rememberme() /home/ubuntu/workspace/login/advanced/includes/class-login.php:56
 [11-Dec-2017 14:43:15 UTC] PHP   4. PDO_DB->insert() /home/ubuntu/workspace/login/advanced/includes/class-login.php:247
+[30-Jan-2018 11:25:34 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'YOUR DATABASE USERNAME HERE'@'localhost' (using password: YES)' in /home/ubuntu/workspace/PHP-Webdevelopment/secure_login_form/advanced/includes/class-db.php:13
+Stack trace:
+#0 /home/ubuntu/workspace/PHP-Webdevelopment/secure_login_form/advanced/includes/class-db.php(13): PDO->__construct('mysql:host=loca...', 'YOUR DATABASE U...', 'YOUR DATABASE P...', Array)
+#1 /home/ubuntu/workspace/PHP-Webdevelopment/secure_login_form/advanced/includes/class-db.php(132): PDO_DB->__construct('YOUR DATABASE N...', 'YOUR DATABASE U...', 'YOUR DATABASE P...', 'utf8mb4', 'localhost')
+#2 /home/ubuntu/workspace/PHP-Webdevelopment/secure_login_form/advanced/load.php(3): require_once('/home/ubuntu/wo...')
+#3 /home/ubuntu/workspace/PHP-Webdevelopment/secure_login_form/advanced/index.php(2): require_once('/home/ubuntu/wo...')
+#4 {main}
+  thrown in /home/ubuntu/workspace/PHP-Webdevelopment/secure_login_form/advanced/includes/class-db.php on line 13

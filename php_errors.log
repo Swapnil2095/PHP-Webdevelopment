@@ -133,3 +133,7 @@ Stack trace:
 [29-Jan-2018 15:03:28 UTC] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/ubuntu/workspace/PHP-Webdevelopment/database_demo/form_to_db.php on line 46
 [29-Jan-2018 15:03:28 UTC] PHP Stack trace:
 [29-Jan-2018 15:03:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/PHP-Webdevelopment/database_demo/form_to_db.php:0
+[30-Jan-2018 07:09:27 UTC] PHP Fatal error:  Call to a member function bind_param() on a non-object in /home/ubuntu/workspace/PHP-Webdevelopment/form_and_db/functions.php on line 92
+[30-Jan-2018 07:09:27 UTC] PHP Stack trace:
+[30-Jan-2018 07:09:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/PHP-Webdevelopment/form_and_db/index.php:0
+[30-Jan-2018 07:09:27 UTC] PHP   2. process() /home/ubuntu/workspace/PHP-Webdevelopment/form_and_db/index.php:10

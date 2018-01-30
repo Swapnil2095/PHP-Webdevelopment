@@ -1,13 +1,13 @@
 <?php
 $users = array(
     array(
-        'username'  => 'john',
-        'password'  => 'morris',
-        'name'      => 'John Morris',
+        'username'  => 'swapnil',
+        'password'  => 'swapnil',
+        'name'      => 'Swapnil G',
     ),
     array(
-        'username'  => 'don',
-        'password'  => 'juan',
-        'name'      => 'Don Juan',
+        'username'  => 'amit',
+        'password'  => 'amit',
+        'name'      => 'Amit K',
     ),
 );
