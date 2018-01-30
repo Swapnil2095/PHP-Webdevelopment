@@ -3,11 +3,11 @@
 date_default_timezone_set('UTC');
 
 // Database details
-define( 'DB_USER', 'YOUR DATABASE USERNAME HERE' );
-define( 'DB_PASS', 'YOUR DATABASE PASSWORD HERE' );
-define( 'DB_NAME', 'YOUR DATABASE NAME HERE' );
+define( 'DB_USER', 'root' );
+define( 'DB_PASS', '' );
+define( 'DB_NAME', 'login_db' );
 define( 'DB_HOST', 'localhost' );
 define( 'DB_CHARSET', 'utf8mb4');
-define( 'ABS_URL', 'YOUR FOLDER URL HERE' );
-define( 'ADMIN_NAME', 'YOUR NAME HERE' );
-define( 'ADMIN_EMAIL', 'YOUR EMAIL ADDRESS HERE' );
+define( 'ABS_URL', 'https://php-projects-swapnil6195.c9users.io/PHP-Webdevelopment/secure_login_form/advanced/' );
+define( 'ADMIN_NAME', 'Swapnil' );
+define( 'ADMIN_EMAIL', 'swapnil6195@gmail.com' );
