@@ -1,8 +1,8 @@
 <?php
 
 $server = 'localhost';
-$user = 'Valeed';
-$password = 'valeed123';
+$user = 'root';
+$password = '';
 $db = 'school';
 
 $conn = mysqli_connect($server,$user,$password,$db);
