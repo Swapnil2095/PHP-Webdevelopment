@@ -1,0 +1,86 @@
+<html>
+
+	<head>
+		<title>First AJAX Example</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script type="text/javascript">
+		
+			function updateText() {
+				
+				/*
+				// GET METHOD IN AJAX USING JAVASCRIPT
+				var current_text = document.getElementById('user_text').value;
+				var http = new XMLHttpRequest();
+				http.onreadystatechange = function() {
+					if( http.readyState == 4 && http.status == 200 ) {
+						var response = http.responseText;
+						document.getElementById('server_response').value = response;
+					}
+				};
+				http.open( "GET" , "http://localhost:8080/understand_ajax/server.php?user_text="+current_text , true );
+				http.send();
+				*/
+				/*
+				// POST METHOD IN AJAX USING JAVASCRIPT
+				var current_text = document.getElementById('user_text').value;
+				var http = new XMLHttpRequest();
+				http.onreadystatechange = function() {
+					if( http.readyState == 4 && http.status == 200 ) {
+						var response = http.responseText;
+						document.getElementById('server_response').value = response;
+					}
+				};
+				http.open( "POST" , "http://localhost:8080/understand_ajax/server.php" , true );
+				http.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
+				http.send( "user_text="+current_text );
+				*/
+				
+				/*
+				// GET METHOD IN AJAX USING JQUERY
+				var current_text = $('#user_text').val();
+				$.get( "http://localhost:8080/understand_ajax/server.php" , "user_text="+current_text ,
+					function( response , status , http ){
+						$('#server_response').val( response );
+					} , "text" );
+				*/
+				/*
+				// POST METHOD IN AJAX USING JQUERY
+				var current_text = $('#user_text').val();
+				$.post( "http://localhost:8080/understand_ajax/server.php" , "user_text="+current_text ,
+					function( response , status , http ){
+						$('#server_response').val( response );
+					} , "text" );
+				*/
+				
+				// GET AND POST METHOD IN AJAX USING $.ajax
+				var current_text = $('#user_text').val();
+				$.ajax({
+				
+					url : "http://localhost:8080/understand_ajax/server.php" ,
+					type : "POST" , 
+					data : "user_text="+current_text ,
+					dataType : "text" ,
+					//beforeSend : function( http ) {
+					//	alert( "Before Send Alert" );
+					//},
+					success : function( response , status , http ) {
+						$('#server_response').val( response );
+					},
+					error : function( http , status , error ) {
+						alert( "Some Error Occured : " + error );
+					}
+					
+				});
+				
+				
+			}
+		
+		</script>
+	</head>
+	
+	<body>
+		<div>Input Text : <input type="text" id="user_text" name="user_text" onkeyup="updateText();" /></div><br/>
+		<div>Server Resp. : <input type="text" id="server_response" name="server_response" readonly /><div>
+	</body>
+
+</html>
