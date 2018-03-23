@@ -22,6 +22,8 @@
                 </div>
 
                 <div class="row">
+
+
                     <?php get_products();  ?>
 
                     <div class="col-sm-4 col-lg-4 col-md-4">

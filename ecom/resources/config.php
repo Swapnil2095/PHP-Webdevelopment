@@ -1,6 +1,7 @@
 <?php
 ob_start(); // for output buffering
 session_start();
+//session_destroy();
 
 defined("DS") ? null : define("DS", DIRECTORY_SEPARATOR);
 //echo (__DIR__);
