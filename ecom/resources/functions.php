@@ -1,5 +1,13 @@
 <?php
+
+$upload_directory = "uploads";
+
 // heaper functions
+function last_id(){
+  global $connection;
+  return mysqli_insert_id($connection);
+}
+
 
 function set_message($msg){
   if(!empty($msg)){
@@ -50,16 +58,17 @@ function get_products(){
   confirm($query);
 
 while($row = fetch_array($query)){
+  $product_image = display_image($row['product_image']);
   $product = <<<DELIMETER
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
-        <a href="item.php?id={$row['product_id']}"><img src="{$row['product_image']}" alt=""></a>
+        <a href="item.php?id={$row['product_id']}"><img src="../resources/{$product_image}" alt=""></a>
         <div class="caption">
             <h4 class="pull-right">&#36;{$row['product_price']}</h4>
             <h4><a href="item.php?id={$row['product_id']}">{$row['product_title']}</a>
             </h4>
             <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-            <a class="btn btn-primary" target="_blank" href="cart.php?add={$row['product_id']}">Add to Cart</a>
+            <a class="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['product_id']}">Add to Cart</a>
         </div>
     </div>
 </div>
@@ -90,10 +99,11 @@ function get_products_in_cat_page(){
   confirm($query);
 
 while($row = fetch_array($query)){
+  $product_image = display_image($row['product_image']);
   $product = <<<DELIMETER
   <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-          <img src="{$row['product_image']}" alt="">
+          <img src="../resources/{$product_image}" alt="">
           <div class="caption">
               <h3>{$row['product_title']}</h3>
               <p>{$row['short_desc']}</p>
@@ -115,15 +125,17 @@ function get_products_in_shop_page(){
   confirm($query);
 
 while($row = fetch_array($query)){
+  $product_image = display_image($row['product_image']);
+
   $product = <<<DELIMETER
   <div class="col-md-3 col-sm-6 hero-feature">
       <div class="thumbnail">
-          <img src="{$row['product_image']}" alt="">
+          <img width='100' src = "../resources/{$product_image}" alt="">
           <div class="caption">
               <h3>{$row['product_title']}</h3>
               <p>{$row['short_desc']}</p>
               <p>
-                  <a href="#" class="btn btn-primary">Buy Now!</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
+                  <a href="../resources/cart.php?add={$row['product_id']}" class="btn btn-primary">Buy Now!</a> <a href="item.php?id={$row['product_id']}" class="btn btn-default">More Info</a>
               </p>
           </div>
       </div>
@@ -150,7 +162,9 @@ function login_user(){
       set_message("Your Password or Username is Wrong..");
       redirect("login.php");
     }else{
-      set_message("Welcome to Admin {$username}");
+
+      $_SESSION['username'] = $username;
+      //set_message("Welcome to Admin {$username}");
       redirect("admin");
     }
 
@@ -182,6 +196,187 @@ function send_message(){
 
   }
 }
+
+/*    BACK END FUNCTIONS */
+
+function display_orders(){
+
+  $query = query("SELECT * FROM orders");
+  confirm($query);
+
+  while($row = fetch_array($query)){
+
+    $orders = <<<DELEMETER
+    <tr>
+        <td>{$row['order_id']}</td>
+        <td>{$row['order_transaction']}</td>
+        <td>{$row['order_currency']}</td>
+        <td>{$row['order_amount']}</td>
+        <td>{$row['order_status']}</td>
+        <td><a class="btn btn-danger" href="../../resources/templates/back/delete_order.php?id={$row['order_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+    </tr>
+DELEMETER;
+    echo $orders;
+  }
+}
+
+
+
+/**************ADMIN Product*****************/
+
+function display_image($picture){
+  global $upload_directory;
+
+  return $upload_directory . DS . $picture;
+}
+
+
+
+function get_products_in_admin(){
+  $query = query("SELECT * FROM products");
+  confirm($query);
+
+  while($row = fetch_array($query)){
+    $product_image = display_image($row['product_image']);
+    $category = show_products_category_title($row['product_category_id']);
+    $product = <<<DELIMETER
+    <tr>
+          <td>{$row['product_id']}</td>
+          <td>{$row['product_title']}<br>
+            <a href="index.php?edit_product&id={$row['product_id']}"><img width = "100"  src="../../resources/{$product_image}" alt=""></a>
+          </td>
+          <td>{$category}</td>
+          <td>{$row['product_price']}</td>
+          <td>{$row['product_quantity']}</td>
+          <td><a class="btn btn-danger" href="../../resources/templates/back/delete_product.php?id={$row['product_id']}"><span class="glyphicon glyphicon-remove"></span></a></td>
+
+      </tr>
+DELIMETER;
+    echo $product;
+
+  }
+}
+
+
+function show_products_category_title($product_category_id){
+  $category_query = query("SELECT * FROM categories WHERE cat_id = '{$product_category_id}'");
+  confirm($category_query);
+
+  while($category_row = fetch_array($category_query)){
+
+    return $category_row['cat_title'];
+  }
+}
+
+
+
+/**************ADMIN Add Product*****************/
+
+function add_product(){
+
+  if(isset($_POST['publish'])){
+    //echo "IT WORKS";
+
+
+    $product_title = escape_string($_POST['product_title']);
+    $product_category_id = escape_string($_POST['product_category_id']);
+    $product_price = escape_string($_POST['product_price']);
+    $product_quantity = escape_string($_POST['product_quantity']);
+    $product_description = escape_string($_POST['product_description']);
+    $product_short_desc = escape_string($_POST['short_desc']);
+    $product_image = escape_string($_FILES['file']['name']);
+    $image_temp_location = escape_string($_FILES['file']['tmp_name']);
+
+    //echo $product_image;
+    //echo $image_temp_location;
+    $path = UPLOAD_DIRECTORY . DS . $product_image;
+    if (move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $product_image)){
+      $file_uploaded = 'TRUE';
+    }
+    else{
+      $file_uploaded = 'FALSE';
+    }
+
+    $query = query("INSERT INTO products(product_title, product_category_id,product_price,product_description, short_desc, product_quantity,product_image)VALUES('{$product_title}','{$product_category_id}','{$product_price}','{$product_description}','{$product_short_desc}','{$product_quantity}','{$product_image}')");
+    $last_id = last_id();
+    confirm($query);
+    set_message("New Product {$product_title} with id {$last_id} added successfully.\nfile {$path} uploded = {$file_uploaded} ");
+    redirect("index.php?products");
+
+
+  }
+
+}
+
+/************UPDATE product***********/
+
+function update_product(){
+
+  if(isset($_POST['update'])){
+    //echo "IT WORKS";
+
+
+    $product_title = escape_string($_POST['product_title']);
+    $product_category_id = escape_string($_POST['product_category_id']);
+    $product_price = escape_string($_POST['product_price']);
+    $product_quantity = escape_string($_POST['product_quantity']);
+    $product_description = escape_string($_POST['product_description']);
+    $product_short_desc = escape_string($_POST['short_desc']);
+    $product_image = escape_string($_FILES['file']['name']);
+    $image_temp_location = escape_string($_FILES['file']['tmp_name']);
+
+    //echo $product_image;
+    //echo $image_temp_location;
+    $path = UPLOAD_DIRECTORY . DS . $product_image;
+    if (move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $product_image)){
+      $file_uploaded = 'TRUE';
+    }
+    else{
+      $file_uploaded = 'FALSE';
+    }
+
+    $query = "UPDATE product SET";
+    $query .= "product_title = '{$product_title}', ";
+    $query .= "product_category_id = '{$product_category_id}', ";
+    $query .= "product_price = '{$product_price}', ";
+    $query .= "product_quantity = '{$product_quantity}', ";
+    $query .= "product_description = '{$product_description}', ";
+    $query .= "short_desc = '{$product_short_desc}', ";
+    $query .= "product_image = '{$product_image}' ";
+    $query .= "WHERE product_id = ". escape_string($_GET['id']) ;
+
+
+    //query($query);
+    confirm($query);
+    set_message("Product {$product_title} with id {$last_id} updated successfully.\nfile {$path} uploded = {$file_uploaded} ");
+    redirect("index.php?products");
+
+
+  }
+
+}
+
+
+
+/***************************/
+
+function show_categories_add_product(){
+  $query = query("select * from categories");
+  confirm($query);
+
+  while($row = fetch_array($query)){
+
+$categories_options = <<<DELIMETER
+<option value="{$row[cat_id]}">{$row[cat_title]}</option>
+DELIMETER;
+
+echo $categories_options;
+  }
+}
+
+
+
+/********************/
 
 
 

@@ -22,7 +22,7 @@
 <div class="row">
 
     <div class="col-md-7">
-       <img class="img-responsive" src="<?php echo $row['product_image']; ?>" alt="">
+       <img class="img-responsive" src="../resources/<?php echo display_image($row['product_image']);  ?>" alt="">
 
     </div>
 
@@ -53,7 +53,7 @@
 
     <form action="">
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="ADD TO CART">
+            <a href="../resources/cart.php?add=<?php  echo $row['product_id']; ?>" class="btn btn-primary">ADD TO CART</a>
         </div>
     </form>
 
