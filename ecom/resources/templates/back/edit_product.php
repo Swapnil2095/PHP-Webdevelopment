@@ -15,7 +15,8 @@ if(isset($_GET['id'])){
     $product_quantity = escape_string($row['product_quantity']);
     $product_description = escape_string($row['product_description']);
     $product_short_desc = escape_string($row['short_desc']);
-    $product_image = escape_string($row['product_image']);
+    //$product_image = escape_string($row['product_image']);
+    $product_image = display_image($row['product_image']);
 
  }
 update_product();
@@ -91,7 +92,7 @@ update_product();
     <div class="form-group">
          <label for="product-title">Product Category</label>
         <select name="product_category_id" id="" class="form-control">
-            <option value="">Select Category</option>
+            <option value="<?php echo $product_category_id; ?>"><?php echo show_products_category_title($product_category_id); ?></option>
             <?php show_categories_add_product(); ?>
         </select>
 
@@ -124,8 +125,8 @@ update_product();
     <!-- Product Image -->
     <div class="form-group">
         <label for="product-title">Product Image</label>
-        <input type="file" name="file" value="<?php echo $product_image; ?>">
-
+        <input type="file" name="file" ><br>
+          <img width='150' src="../../resources/<?php echo $product_image; ?>" alt=''>
     </div>
 
 
