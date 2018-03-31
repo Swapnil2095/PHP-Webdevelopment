@@ -29,7 +29,7 @@
             $user_firstname = escape($_POST['user_firstname']);
             $user_lastname = escape($_POST['user_lastname']);
             $user_role = escape($_POST['user_role']);
-            
+
                 // $post_image = $_FILES['image']['name'];
                 // $post_image_temp = $_FILES['image']['tmp_name'];
 
@@ -48,11 +48,9 @@
                 $row = mysqli_fetch_array($get_user_query);
                 $db_user_password = $row['user_password'];
 
-
                 if ($db_user_password != $user_password) {
                     $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
                 }
-
 
                 $query = "UPDATE users SET ";
                 $query .= "user_firstname  = '{$user_firstname}', ";
@@ -78,7 +76,7 @@
 ?>
 
 
-<form action="" method="post" enctype="multipart/form-data">    
+<form action="" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
         <label for="title">Firstname</label>
@@ -93,15 +91,15 @@
     <div class="form-group">
         <select name="user_role" id="">
             <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
-            <?php 
+            <?php
 
-                if ($user_role == 'admin') {
+                if ($user_role === 'admin') {
                     echo "<option value='subscriber'>subscriber</option>";
                 } else {
                     echo "<option value='admin'>admin</option>";
                 }
 
-            ?>        
+            ?>
         </select>
     </div>
 
@@ -124,7 +122,7 @@
 
     <div class="form-group">
         <label for="post_content">Password</label>
-        <input type="password" value="<?php //echo $user_password; ?>" class="form-control" name="user_password">
+        <input type="password" value="<?php echo $user_password; ?>" class="form-control" name="user_password">
     </div>
 
     <div class="form-group">

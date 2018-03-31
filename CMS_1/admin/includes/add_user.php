@@ -22,7 +22,7 @@
 
 ?>
 
-<form action="" method="post" enctype="multipart/form-data">    
+<form action="" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
         <label for="title">Firstname</label>
@@ -39,7 +39,7 @@
             <option value="subscriber">Select Options</option>
             <option value="admin">Admin</option>
             <option value="subscriber">Subscriber</option>
-            
+
         </select>
     </div>
 

@@ -119,8 +119,8 @@ if (isset($_POST['update_post'])) {
                 confirmQuery($select_users);
                 while ($row = mysqli_fetch_assoc($select_users)) {
                     $user_id = $row['user_id'];
-                    $username = $row['username'];
-                    echo "<option value='{$username}'>{$username}</option>";
+                    $user_name = $row['user_name'];
+                    echo "<option value='{$user_name}'>{$user_name}</option>";
                 }
             ?>
         </select>
@@ -156,11 +156,11 @@ if (isset($_POST['update_post'])) {
 
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea  class="form-control "name="post_content" id="" cols="30" rows="10"><?php echo $post_content; ?></textarea>
+        <textarea  class="form-control "name="post_content" id="body" cols="30" rows="10"><?php echo str_replace("\r\n", "<br>", $post_content); ?></textarea>
     </div>
 
     <div class="form-group">
         <input class="btn btn-primary" type="submit" name="update_post" value="Update Post">
     </div>
-    
+
 </form>

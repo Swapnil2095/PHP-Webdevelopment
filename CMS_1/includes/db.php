@@ -1,6 +1,8 @@
 <?php 
     
     ob_start();
+    session_start();    
+    date_default_timezone_set('Asia/Kolkata');//or change to whatever timezone you want
 
     $db['db_host'] = "localhost";
     $db['db_user'] = "Swapnil";

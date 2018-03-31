@@ -1,6 +1,4 @@
 
-
-
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -14,10 +12,19 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+                <!--li><a href = ''>Users Online: <?php //echo users_online(); ?>  </a></li-->
+                <li><a href = ''>Users Online:<span class="usersonline"></span> </a></li>
                 <li><a href="../index.php">Home</a></li>
-            
+
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                            <?php
+                                if(isset($_SESSION['user_name'])){
+                                echo $_SESSION['user_name'];
+                            }
+
+                            ?>
+                            <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="profiles.php"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -69,7 +76,7 @@
 
 
                     <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profiles</a>
+                        <a href="profile.php"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
                     </li>
 
                 </ul>
